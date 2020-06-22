@@ -15,3 +15,7 @@ class MainPageTest(TestCase):
     def test_correct_html(self):
         response = self.client.get('/')
         self.assertTemplateUsed(response, 'index.html')
+
+    def test_can_save_a_POST_request(self):
+        response = self.client.post('/', data={'first_name': 'Adam'})
+        self.assertIn('Adam', response.content.decode())
