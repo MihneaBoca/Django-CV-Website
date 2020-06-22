@@ -19,13 +19,23 @@ class NewTest(unittest.TestCase):
 
         # He goes to the homepage
         # browser = webdriver.Chrome(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'cromedriver.exe'))
-        #browser = webdriver.Chrome()
+        # browser = webdriver.Chrome()
         self.browser.get('http://localhost:8000')
 
         self.assertIn('Home', self.browser.title)
 
         # He sees the form he needs to complete in order to end up with a CV
         # He enters his name first
+        input_fn = self.browser.find_element_by_id('id_first_name')
+        input_ln = self.browser.find_element_by_id('id_last_name')
+        self.assertEqual(
+            input_fn.get_attribute('placeholder'),
+            'Enter your First Name'
+        )
+        self.assertEqual(
+            input_ln.get_attribute('placeholder'),
+            'Enter your Last Name'
+        )
 
         # He has no work experience yet so he decides to skip that part
 
@@ -40,6 +50,7 @@ class NewTest(unittest.TestCase):
         # He enters them and is then able to submit his CV
         # He decides to go an check if his CV was indeed saved on the website
         # He accesses the website again and sees that his CV was saved and can modify it again
+
 
 if __name__ == '__main__':
     unittest.main(warnings='ignore')
