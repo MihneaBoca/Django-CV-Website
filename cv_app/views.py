@@ -6,5 +6,6 @@ from django.shortcuts import render
 def index(request):
     return render(request, 'index.html')
 
+
 def bonus(request):
     return render(request, 'bonus.html')

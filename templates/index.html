@@ -6,5 +6,20 @@
 </head>
 <body>
     <p>Hello!</p>
+    <form method="post">
+        First Name: <input placeholder="Enter your First Name" required/>
+        Last Name: <input placeholder="Enter your Last Name" required/> <p></p>
+        Email: <input id="id_new_item" placeholder="Enter your email" required>
+        <p></p>
+        Address: <input placeholder="Enter your Address" required/><p></p>
+        Phone number: <input placeholder="Enter your phone number" required/><p></p>
+        {% csrf_token %}
+        Personal description: <p></p> <textarea rows="8" cols="100" ></textarea> <p></p>
+        Experience: <p></p> <textarea rows="10" cols="100" ></textarea> <p></p>
+        Education: <p></p> <textarea rows="10" cols="100" ></textarea> <p></p>
+        Skills: <p></p> <textarea rows="10" cols="80" ></textarea> <p></p>
+        Hobbies: <p></p> <textarea rows="10" cols="80" ></textarea> <p></p>
+        <button type="Submit">Submit</button>
+    </form>
 </body>
 </html>
