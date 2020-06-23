@@ -44,7 +44,7 @@ class NewTest(unittest.TestCase):
         # He has no work experience yet so he decides to skip that part
         # Then he enters information about his education
         input_ed = self.browser.find_element_by_id('id_education')
-        input_ed.send_keys('I studied at University of Birmingham.')
+        input_ed.send_keys('I studied at the University of Birmingham.')
 
         # After that he enters some of his skills
         input_sk = self.browser.find_element_by_id('id_skills')
@@ -63,7 +63,7 @@ class NewTest(unittest.TestCase):
         self.browser.find_element_by_id('id_address').send_keys('18 Code Road, B21 2XS')
         self.browser.find_element_by_id('id_phone_number').send_keys('0734231234')
         self.browser.find_element_by_id('id_submit').click()
-        time.sleep(2)
+        time.sleep(20)
 
         # He decides to go an check if his CV was indeed saved on the website
         # He accesses the website again and sees that his CV was saved and can modify it again
