@@ -63,7 +63,14 @@ class NewTest(unittest.TestCase):
         self.browser.find_element_by_id('id_address').send_keys('18 Code Road, B21 2XS')
         self.browser.find_element_by_id('id_phone_number').send_keys('0734231234')
         self.browser.find_element_by_id('id_submit').click()
-        time.sleep(20)
+        time.sleep(5)
+
+        self.browser.get('http://localhost:8000/display')
+        time.sleep(5)
+        self.assertEqual(
+            self.browser.find_element_by_id('fn').text,
+            'Adam'
+        )
 
         # He decides to go an check if his CV was indeed saved on the website
         # He accesses the website again and sees that his CV was saved and can modify it again

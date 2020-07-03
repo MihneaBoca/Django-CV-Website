@@ -19,6 +19,7 @@ from cv_app import views
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('display/', views.DisplayListView.as_view(), name='display'),
     path('bonus/', views.bonus, name='bonus'),
     path('admin/', admin.site.urls),
 ]

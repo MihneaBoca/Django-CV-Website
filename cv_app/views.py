@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.views.generic import ListView
+
 from cv_app.models import CV
 
 
@@ -14,8 +16,16 @@ def index(request):
                                       pers_desc=request.POST['pers_desc'], experience=request.POST['experience'],
                                       education=request.POST['education'], skills=request.POST['skills'],
                                       hobbies=request.POST['hobbies'])[0]
-        #return HttpResponse(request.POST['first_name'])
+        # return HttpResponse(request.POST['first_name'])
     return render(request, 'index.html')
+
+
+class DisplayListView(ListView):
+    model = CV
+    template_name = 'display_list.html'
+
+    def get_queryset(self):
+        return CV.objects.all()
 
 
 def bonus(request):

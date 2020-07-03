@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% for display in object_list %}
+        {% if display.first_name == 'Adam' %}
+            <p id="fn">{{ display.first_name }}</p>
+            <p>{{ display.last_name }}</p>
+            <p>{{ display.email }}</p>
+            <p>{{ display.phone_number }}</p>
+            <p>{{ display.address }}</p>
+            <p>{{ display.pers_desc }}</p>
+            <p>{{ display.experience }}</p>
+            <p>{{ display.education }}</p>
+            <p>{{ display.skills }}</p>
+            <p>{{ display.hobbies }}</p>
+        {% endif %}
+    {% endfor %}
+</body>
+</html>
