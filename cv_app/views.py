@@ -9,9 +9,10 @@ from cv_app.models import CV
 
 def index(request):
     if request.method == 'POST':
-        fn = request.POST['first_name']
-        ln = request.POST['last_name']
-        cv = CV.objects.get_or_create(first_name=fn, last_name=ln, email=request.POST['email'],
+        # fn = request.POST['first_name']
+        # ln = request.POST['last_name']
+        cv = CV.objects.get_or_create(username=request.POST['username'], first_name=request.POST['first_name'],
+                                      last_name=request.POST['last_name'], email=request.POST['email'],
                                       address=request.POST['address'], phone_number=request.POST['phone_number'],
                                       pers_desc=request.POST['pers_desc'], experience=request.POST['experience'],
                                       education=request.POST['education'], skills=request.POST['skills'],

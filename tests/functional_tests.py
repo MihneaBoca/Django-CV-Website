@@ -52,13 +52,14 @@ class NewTest(unittest.TestCase):
         time.sleep(2)
 
         # After he reads everything he has just written he decides to submit his CV,
-        # but he gets a prompt that says he hasn't entered his email and address and
+        # but he gets a prompt that says he hasn't entered his email and a username and
         # that he must enter them before submitting the CV
         self.browser.find_element_by_id('id_submit').click()
         time.sleep(2)
         self.assertIn('Home', self.browser.title)
 
         # He enters them and is then able to submit his CV
+        self.browser.find_element_by_id('id_username').send_keys('Adam01')
         self.browser.find_element_by_id('id_email').send_keys('adam_cart@gmail.com')
         self.browser.find_element_by_id('id_address').send_keys('18 Code Road, B21 2XS')
         self.browser.find_element_by_id('id_phone_number').send_keys('0734231234')

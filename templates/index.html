@@ -14,6 +14,8 @@
     <div class="container">
     <form method="post">
         {% csrf_token %}
+         <strong>Enter a username so you can access your CV in the future:</strong> <p></p>
+        <input name="username" id="id_username" placeholder="Enter a username" required/> <p></p>
         <strong>First Name:</strong>
         <input name="first_name" id="id_first_name" placeholder="Enter your First Name" required/>
         <strong>Last Name: </strong>
@@ -21,9 +23,9 @@
         <strong>Email: </strong>
         <input name="email" id="id_email" placeholder="Enter your email" required><p></p>
         <strong>Address: </strong>
-        <input name="address" id="id_address" placeholder="Enter your address" required/><p></p>
+        <input name="address" id="id_address" placeholder="Enter your address"/><p></p>
         <strong>Phone number: </strong>
-        <input name="phone_number" id="id_phone_number" placeholder="Enter your phone number" required/><p></p>
+        <input name="phone_number" id="id_phone_number" placeholder="Enter your phone number"/><p></p>
         <strong>Personal description: </strong> <p></p>
         <textarea name="pers_desc" id="id_pers_desc" rows="8" cols="100" ></textarea> <p></p>
         <strong>Experience: </strong> <p></p>
