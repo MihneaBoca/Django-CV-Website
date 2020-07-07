@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit CV</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+<body>
+    <nav class="navbar navbar-default" style="background-color: #5eb477;">
+        <!--<div class="container">-->
+         <a class="navbar-brand"  href="#">Navbar</a>
+        <!--</div>-->
+    </nav>
+    <div class="container">
+    <form method="post">
+        {% csrf_token %}
+        {% for display in data %}
+                {% if display.username == 'Adam01' %}
+                    <input type="hidden" name="username" value={{ display.username }} required>
+                    <strong>First Name:</strong>
+                    <input name="first_name" id="id_first_name" placeholder="Enter your First Name" value={{ display.first_name }} required/>
+                    <strong>Last Name: </strong>
+                    <input name="last_name" id="id_last_name" placeholder="Enter your Last Name" value={{ display.last_name }} required/> <p></p>
+                    <strong>Email: </strong>
+                    <input name="email" id="id_email" placeholder="Enter your email" value={{ display.email }} required><p></p>
+                    <strong>Address: </strong>
+                    <textarea name="address" id="id_address" rows="1" cols="40" placeholder="Enter your address" >{{ display.address }}</textarea><p></p>
+                    <strong>Phone number: </strong>
+                    <textarea name="phone_number" id="id_phone_number" rows="1" cols="20"  placeholder="Enter your phone number" >{{ display.phone_number }}</textarea><p></p>
+                    <strong>Personal description: </strong> <p></p>
+                    <textarea name="pers_desc" id="id_pers_desc" rows="8" cols="100">{{ display.pers_desc }}</textarea><p></p>
+                    <strong>Experience: </strong> <p></p>
+                    <textarea name="experience" id="id_experience" rows="10" cols="100">{{ display.experience }}</textarea> <p></p>
+                    <strong>Education: </strong> <p></p>
+                    <textarea name="education" id="id_education" rows="10" cols="100">{{ display.education }}</textarea> <p></p>
+                    <strong>Skills: </strong><p></p>
+                    <textarea name="skills" id="id_skills" rows="10" cols="80">{{ display.skills }}</textarea> <p></p>
+                    <strong>Hobbies: </strong> <p></p>
+                    <textarea name="hobbies" id="id_hobbies" rows="10" cols="80">{{ display.hobbies }}</textarea> <p></p>
+
+            {% endif %}
+        {% endfor %}
+
+        <button class="btn btn-success" type="Submit" id="id_submit" name="submit">Submit</button>
+    </form>
+        </div>
+</body>
+</html>
