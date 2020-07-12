@@ -25,6 +25,11 @@ class NewTest(unittest.TestCase):
 
         self.assertIn('Home', self.browser.title)
 
+        # He sees two buttons that say Create New CV or Edit CV and a form to enter his username
+        # and since he doesn't have one he clicks on the first button
+
+        self.browser.find_element_by_id('id_new_cv').click()
+
         # He sees the form he needs to complete in order to end up with a CV
         # He enters his name first
         input_fn = self.browser.find_element_by_id('id_first_name')

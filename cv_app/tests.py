@@ -39,3 +39,10 @@ class MainPageTest(TestCase):
         with self.assertRaises(Exception) as raised:
             CV(username='Adam2').save()
         self.assertEqual(IntegrityError, type(raised.exception))
+
+    def test_redirects_after_POST(self):
+        response = self.client.post('/', data={'username': 'ca', 'first_name': 'person', 'last_name': 'the',
+                                               'email': 'a@yahho.com', 'address': 'a', 'phone_number': '0212',
+                                               'pers_desc': '', 'experience': '', 'education': '', 'skills': '',
+                                               'hobbies': ''})
+        self.assertRedirects(response, '/', status_code=200)
