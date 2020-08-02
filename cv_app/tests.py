@@ -46,3 +46,11 @@ class MainPageTest(TestCase):
         self.assertContains(
             response, 'href="{0}"'.format(index_url)
         )
+
+    def test_link_to_edit(self):
+        select_url = reverse("select")
+        response = self.client.get(select_url)
+        edit_url = reverse("edit")
+        self.assertContains(
+            response, 'href="{0}"'.format(edit_url)
+        )

@@ -82,6 +82,11 @@ class NewTest(unittest.TestCase):
         # He decides to go an check if his CV was indeed saved on the website
         # He accesses the website again and sees that his CV was saved and can modify it again
 
+        # He wants to edit his CV so he clicks on edit cv this time
+        self.browser.get('http://localhost:8000/select')
+
+        self.browser.find_element_by_id('id_edit_cv').click()
+
 
 if __name__ == '__main__':
     unittest.main(warnings='ignore')
