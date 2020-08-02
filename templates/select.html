@@ -17,8 +17,8 @@
         <h5>To edit an existing CV enter the username associated with your CV:</h5> <p></p>
         <form method="post">
             {% csrf_token %}
-            </select>
-            <button class="btn btn-success" type="Submit" id="id_submit" name="submit">Edit CV</button></a>
+            <a href="{% url 'edit' %}">
+                <button class="btn btn-success" type="Submit" id="id_submit" name="submit">Edit CV</button></a>
         </form>
     </div>
 
