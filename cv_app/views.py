@@ -69,5 +69,10 @@ class DisplayElements(ListView):
         return CV.objects.all()
 
 
+def select(request):
+    return render(request, 'select.html', )
+
+
+
 def bonus(request):
     return render(request, 'bonus.html')

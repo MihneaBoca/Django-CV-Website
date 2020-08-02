@@ -22,5 +22,6 @@ urlpatterns = [
     path('edit/', views.edit, name='edit'),
     path('display/', views.DisplayListView.as_view(), name='display'),
     path('bonus/', views.bonus, name='bonus'),
+    path('select/', views.select, name='select'),
     path('admin/', admin.site.urls),
 ]

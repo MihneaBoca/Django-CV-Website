@@ -1,7 +1,6 @@
 from django.db import IntegrityError
 from django.test import TestCase
-from django.urls import resolve
-
+from django.urls import resolve, reverse
 
 from cv_app.views import index
 from cv_app.models import CV
@@ -40,9 +39,10 @@ class MainPageTest(TestCase):
             CV(username='Adam2').save()
         self.assertEqual(IntegrityError, type(raised.exception))
 
-    def test_redirects_after_POST(self):
-        response = self.client.post('/', data={'username': 'ca', 'first_name': 'person', 'last_name': 'the',
-                                               'email': 'a@yahho.com', 'address': 'a', 'phone_number': '0212',
-                                               'pers_desc': '', 'experience': '', 'education': '', 'skills': '',
-                                               'hobbies': ''})
-        self.assertRedirects(response, '/', status_code=200)
+    def test_link_to_create(self):
+        select_url = reverse("select")
+        response = self.client.get(select_url)
+        index_url = reverse("index")
+        self.assertContains(
+            response, 'href="{0}"'.format(index_url)
+        )
