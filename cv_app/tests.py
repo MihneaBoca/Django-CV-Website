@@ -54,3 +54,19 @@ class MainPageTest(TestCase):
         self.assertContains(
             response, 'href="{0}"'.format(edit_url)
         )
+
+    def test_back_from_create(self):
+        index_url = reverse("index")
+        response = self.client.get(index_url)
+        select_url = reverse("select")
+        self.assertContains(
+            response, 'href="{0}"'.format(select_url)
+        )
+
+    def test_back_from_edit(self):
+        edit_url = reverse("edit")
+        response = self.client.get(edit_url)
+        select_url = reverse("select")
+        self.assertContains(
+            response, 'href="{0}"'.format(select_url)
+        )

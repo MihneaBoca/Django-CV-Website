@@ -85,6 +85,9 @@ class NewTest(unittest.TestCase):
         # He wants to edit his CV so he clicks on edit cv this time
         self.browser.get('http://localhost:8000/select')
 
+        # He accidentally clicks on New CV and goes back to the selection page
+        self.browser.find_element_by_id('id_new_cv').click()
+        self.browser.find_element_by_id('id_new_back').click()
         self.browser.find_element_by_id('id_edit_cv').click()
 
 
