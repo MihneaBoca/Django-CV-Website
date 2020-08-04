@@ -18,6 +18,9 @@ class NewTest(unittest.TestCase):
         # Adam is a student that wants to write a CV for future use,
         # he's heard there is a website where you can write your CV online
 
+        # He goes on the web page and clicks on CV Maker
+        self.browser.find_element_by_id('id_link_to_maker').click()
+
         # He goes to the homepage
         # browser = webdriver.Chrome(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'cromedriver.exe'))
         # browser = webdriver.Chrome()
@@ -29,7 +32,6 @@ class NewTest(unittest.TestCase):
         self.browser.find_element_by_id('id_new_cv').click()
 
         self.assertIn('Home', self.browser.title)
-
 
         # He sees the form he needs to complete in order to end up with a CV
         # He enters his name first

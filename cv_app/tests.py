@@ -70,3 +70,19 @@ class MainPageTest(TestCase):
         self.assertContains(
             response, 'href="{0}"'.format(select_url)
         )
+
+    def test_navigate(self):
+        index_url = reverse("index")
+        response = self.client.get(index_url)
+        select_url = reverse("select")
+        self.assertContains(
+            response, 'href="{0}"'.format(select_url)
+        )
+        home_url = reverse("index")
+        self.assertContains(
+            response, 'href="{0}"'.format(home_url)
+        )
+        blog_url = reverse("bonus")
+        self.assertContains(
+            response, 'href="{0}"'.format(blog_url)
+        )
