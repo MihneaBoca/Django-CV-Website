@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+{% extends 'base.html' %}
+{% block content %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,11 +8,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 </head>
 <body>
-    <nav class="mb-1 navbar navbar-expand-sm navbar-default" style="background-color: #5eb477;">
-            <a class="navbar-brand" href="{% url 'index' %}"><strong>Home</strong></a>
-            <a class="nav-item nav-link" href="{% url 'select' %}"><strong>CV Maker</strong></a>
-            <a class="nav-item nav-link" href="{% url 'bonus' %}"><strong>Blog</strong></a>
-        </nav>
     <div class="container">
     <form method="post">
         {% csrf_token %}
@@ -42,4 +39,5 @@
     </form>
         </div>
 </body>
+{% endblock %}
 </html>

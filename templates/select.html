@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+{% extends 'base.html' %}
+{% block content %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,9 +8,6 @@
     <title>Title</title>
 </head>
 <body>
-    <nav class="navbar navbar-default" style="background-color: #5eb477;">
-         <a class="navbar-brand"  href="#">Navbar</a>
-    </nav>
     <div class="container">
         <h5>Would you like to create a new CV?</h5>
         <a href="{% url 'index' %}">
@@ -23,4 +22,5 @@
     </div>
 
 </body>
+{% endblock %}
 </html>

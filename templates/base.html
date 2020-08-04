@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+
+        <nav class="mb-1 navbar navbar-expand-sm navbar-default" style="background-color: #5eb477;">
+        <!--<div class="container">-->
+            <a class="navbar-brand"  href="{% url 'index' %}"><strong>Home</strong></a>
+            <a class="nav-item nav-link" href="{% url 'select' %}"><strong>CV Maker</strong></a>
+            <a class="nav-item nav-link" href="{% url 'bonus' %}"><strong>Blog</strong></a>
+
+        <!--</div>-->
+        </nav>
+        {% block content %}
+        {% endblock %}
+</html>
