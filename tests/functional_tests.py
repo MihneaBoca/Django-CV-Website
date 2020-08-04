@@ -19,12 +19,13 @@ class NewTest(unittest.TestCase):
         # he's heard there is a website where you can write your CV online
 
         # He goes on the web page and clicks on CV Maker
-        self.browser.find_element_by_id('id_link_to_maker').click()
+        self.browser.get('http://localhost:8000')
+        time.sleep(5)
+        self.browser.find_element_by_link_text('CV Maker').click()
 
         # He goes to the homepage
         # browser = webdriver.Chrome(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'cromedriver.exe'))
         # browser = webdriver.Chrome()
-        self.browser.get('http://localhost:8000/select')
 
         # He sees two buttons that say Create New CV or Edit CV and a form to enter his username
         # and since he doesn't have one he clicks on the first button
