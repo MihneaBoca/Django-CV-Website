@@ -23,5 +23,7 @@ urlpatterns = [
     path('display/', views.DisplayListView.as_view(), name='display'),
     path('bonus/', views.bonus, name='bonus'),
     path('select/', views.select, name='select'),
+    path('new_cv/display/', views.display, name='display'),
+    path('edit/display/', views.display, name='display'),
     path('admin/', admin.site.urls),
 ]
