@@ -76,7 +76,8 @@ class NewTest(unittest.TestCase):
         time.sleep(5)
 
         # The website displays his brand new CV and after reading it he returns to the CV Maker menu
-        self.browser.find_element_by_id('id_select').click()
+        self.browser.get('http://localhost:8000/new_cv/display')
+        self.browser.find_element_by_id('id_menu_back').click()
 
         # He wants to edit his CV so he clicks on edit cv this time
         self.browser.get('http://localhost:8000/select')
