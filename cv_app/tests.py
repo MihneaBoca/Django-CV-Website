@@ -24,6 +24,13 @@ class MainPageTest(TestCase):
         response = self.client.get('/edit/')
         self.assertTemplateUsed(response, 'edit.html')
 
+    def test_display_html(self):
+        response = self.client.get('/new_cv/display/')
+        self.assertTemplateUsed(response, 'display.html')
+        response = self.client.get('/edit/display/')
+        self.assertTemplateUsed(response, 'display.html')
+
+
     def test_can_save_to_database(self):
         cv1 = CV(username='Adam001')
         cv2 = CV(username='Jessica001')
