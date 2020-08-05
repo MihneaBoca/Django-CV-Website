@@ -9,10 +9,11 @@
 </head>
 <body>
     <div class="container">
-    <form method="post">
+        <h2>The selected username is: {{ user_id }}</h2>
+    <form method="post" action ="display/">
         {% csrf_token %}
         {% for display in data %}
-                {% if display.username == 'Adam01' %}
+                 {% if display.username ==  user_id %}
                     <input type="hidden" name="username" value={{ display.username }} required>
                     <strong>First Name:</strong>
                     <input name="first_name" id="id_first_name" placeholder="Enter your First Name" value={{ display.first_name }} required/>

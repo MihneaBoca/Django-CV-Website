@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New CV</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <form method="post" action="display/">
+        {% csrf_token %}
+         <strong>Enter a username so you can access your CV in the future:</strong> <p></p>
+        <input name="username" id="id_username" placeholder="Enter a username" required/> <p></p>
+        <strong>First Name:</strong>
+        <input name="first_name" id="id_first_name" placeholder="Enter your First Name" required/>
+        <strong>Last Name: </strong>
+        <input name="last_name" id="id_last_name" placeholder="Enter your Last Name" required/> <p></p>
+        <strong>Email: </strong>
+        <input name="email" id="id_email" placeholder="Enter your email" required><p></p>
+        <strong>Address: </strong>
+        <input name="address" id="id_address" placeholder="Enter your address"/><p></p>
+        <strong>Phone number: </strong>
+        <input name="phone_number" id="id_phone_number" placeholder="Enter your phone number"/><p></p>
+        <strong>Personal description: </strong> <p></p>
+        <textarea name="pers_desc" id="id_pers_desc" rows="8" cols="100" ></textarea> <p></p>
+        <strong>Experience: </strong> <p></p>
+        <textarea name="experience" id="id_experience" rows="10" cols="100" ></textarea> <p></p>
+        <strong>Education: </strong> <p></p>
+        <textarea name="education" id="id_education" rows="10" cols="100" ></textarea> <p></p>
+        <strong>Skills: </strong><p></p>
+        <textarea name="skills" id="id_skills" rows="10" cols="80" ></textarea> <p></p>
+        <strong>Hobbies: </strong> <p></p>
+        <textarea name="hobbies" id="id_hobbies" rows="10" cols="80" ></textarea> <p></p>
+        <a href="{% url 'select' %}">
+            <button class="btn btn-success" type="button" id="id_new_back">< Back</button></a>
+            <button class="btn btn-success" type="Submit" id="id_submit" name="submit">Submit</button>
+    </form>
+        </div>
+</body>
+{% endblock %}
+</html>

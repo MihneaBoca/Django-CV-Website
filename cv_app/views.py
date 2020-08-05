@@ -1,43 +1,25 @@
 from django.core.exceptions import ValidationError
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views.generic import ListView
-
+from django.contrib import messages
 from cv_app.models import CV
 
 
 # Create your views here.
 
 def index(request):
-    if request.method == 'POST':
-        # fn = request.POST['first_name']
-        # ln = request.POST['last_name']
-        if CV.objects.filter(username=request.POST['username']).exists():
-            return HttpResponse('Username already exits.')
-        cv = CV.objects.get_or_create(username=request.POST['username'], first_name=request.POST['first_name'],
-                                      last_name=request.POST['last_name'], email=request.POST['email'],
-                                      address=request.POST['address'], phone_number=request.POST['phone_number'],
-                                      pers_desc=request.POST['pers_desc'], experience=request.POST['experience'],
-                                      education=request.POST['education'], skills=request.POST['skills'],
-                                      hobbies=request.POST['hobbies'])[0]
-        # return HttpResponse(request.POST['first_name'])
     return render(request, 'index.html')
 
 
+def new_cv(request):
+    return render(request, 'new_cv.html')
+
+
 def edit(request):
-    # DisplayElements.as_view()
     data = CV.objects.all()
-    if request.method == 'POST':
-        # fn = request.POST['first_name']
-        # ln = request.POST['last_name']
-        CV.objects.filter(username='Adam01').delete()
-        cv = CV.objects.get_or_create(username=request.POST['username'], first_name=request.POST['first_name'],
-                                      last_name=request.POST['last_name'], email=request.POST['email'],
-                                      address=request.POST['address'], phone_number=request.POST['phone_number'],
-                                      pers_desc=request.POST['pers_desc'], experience=request.POST['experience'],
-                                      education=request.POST['education'], skills=request.POST['skills'],
-                                      hobbies=request.POST['hobbies'])[0]
-    return render(request, 'edit.html', {'data': data})
+    user_id = request.POST.get('username_select')
+    return render(request, 'edit.html', {'data': data, 'user_id': user_id})
 
 
 class DisplayListView(ListView):
@@ -46,19 +28,6 @@ class DisplayListView(ListView):
 
     def get_queryset(self):
         return CV.objects.all()
-
-    def edit(self):
-        # DisplayElements.as_view()
-        if self.method == 'POST':
-            # fn = request.POST['first_name']
-            # ln = request.POST['last_name']
-            cv = CV.objects.get_or_create(username=self.POST['username'], first_name=self.POST['first_name'],
-                                          last_name=self.POST['last_name'], email=self.POST['email'],
-                                          address=self.POST['address'], phone_number=self.POST['phone_number'],
-                                          pers_desc=self.POST['pers_desc'], experience=self.POST['experience'],
-                                          education=self.POST['education'], skills=self.POST['skills'],
-                                          hobbies=self.POST['hobbies'])[0]
-        return render(self, 'edit.html')
 
 
 class DisplayElements(ListView):
@@ -69,13 +38,49 @@ class DisplayElements(ListView):
         return CV.objects.all()
 
 
-def select(request):
-    return render(request, 'select.html', )
+def tem_display(request):
+    display_data = CV.objects.all()
+    display_user_id = request.POST.get('username')
+    cv = CV.objects.get(username=display_user_id)
+    fn = request.POST.get('first_name')
+    cv.first_name = request.POST.get('first_name')
+    cv.last_name = request.POST.get('last_name')
+    cv.email = request.POST.get('email')
+    cv.address = request.POST.get('address')
+    cv.phone_number = request.POST.get('phone_number')
+    cv.pers_desc = request.POST.get('pers_desc')
+    cv.experience = request.POST.get('experience')
+    cv.education = request.POST.get('education')
+    cv.skills = request.POST.get('skills')
+    cv.hobbies = request.POST.get('hobbies')
+    cv.save()
+    return render(request, 'display.html', {'display_data': display_data, 'display_user_id': display_user_id})
 
+
+def new_display(request):
+    if request.method == 'POST':
+        if CV.objects.filter(username=request.POST['username']).exists():
+            messages.error(request, "This username already exists.")
+            return redirect('new_cv')
+        cv = CV.objects.get_or_create(username=request.POST['username'], first_name=request.POST['first_name'],
+                                      last_name=request.POST['last_name'], email=request.POST['email'],
+                                      address=request.POST['address'], phone_number=request.POST['phone_number'],
+                                      pers_desc=request.POST['pers_desc'], experience=request.POST['experience'],
+                                      education=request.POST['education'], skills=request.POST['skills'],
+                                      hobbies=request.POST['hobbies'])[0]
+    display_data = CV.objects.all()
+    display_user_id = request.POST.get('username')
+    return render(request, 'display.html', {'display_data': display_data, 'display_user_id': display_user_id})
+
+
+def select(request):
+    username = CV.objects.values_list('username', flat=True)
+    return render(request, 'select.html', {'username': username})
 
 
 def bonus(request):
     return render(request, 'bonus.html')
+
 
 def display(request):
     return render(request, 'display.html')

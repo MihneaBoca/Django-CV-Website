@@ -10,14 +10,18 @@
 <body>
     <div class="container">
         <h5>Would you like to create a new CV?</h5>
-        <a href="{% url 'index' %}">
+        <a href="{% url 'new_cv' %}">
             <button class="btn btn-success" type="Submit" id="id_new_cv" name="New CV">New CV</button> <p></p>
         </a>
         <h5>To edit an existing CV enter the username associated with your CV:</h5> <p></p>
-        <form method="post">
+        <form method="post"  action="edit/">
             {% csrf_token %}
-            <a href="{% url 'edit' %}">
-                <button class="btn btn-success" type="Submit" id="id_edit_cv" name="submit">Edit CV</button></a>
+             <select name="username_select">
+                 {% for use in username %}
+                    <option value="{{ use }}">{{ use }}</option>
+                 {% endfor %}
+            </select>
+                <button class="btn btn-success" type="Submit" id="id_edit_cv" name="submit">Edit CV</button>
         </form>
     </div>
 
