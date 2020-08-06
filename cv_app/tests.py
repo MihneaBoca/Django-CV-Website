@@ -21,13 +21,11 @@ class MainPageTest(TestCase):
         self.assertTemplateUsed(response, 'bonus.html')
         response = self.client.get('/display/')
         self.assertTemplateUsed(response, 'display_list.html')
-        response = self.client.get('/edit/')
+        response = self.client.get('/select/edit/')
         self.assertTemplateUsed(response, 'edit.html')
 
     def test_display_html(self):
         response = self.client.get('/new_cv/display/')
-        self.assertTemplateUsed(response, 'display.html')
-        response = self.client.get('/edit/display/')
         self.assertTemplateUsed(response, 'display.html')
 
 
@@ -54,12 +52,12 @@ class MainPageTest(TestCase):
             response, 'href="{0}"'.format(index_url)
         )
 
-    def test_link_to_edit(self):
+    def test_display_to_select(self):
+        display_url = reverse("display")
+        response = self.client.get(display_url)
         select_url = reverse("select")
-        response = self.client.get(select_url)
-        edit_url = reverse("edit")
         self.assertContains(
-            response, 'href="{0}"'.format(edit_url)
+            response, 'href="{0}"'.format(select_url)
         )
 
     def test_back_from_create(self):
