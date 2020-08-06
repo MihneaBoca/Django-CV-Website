@@ -20,6 +20,7 @@ class NewTest(unittest.TestCase):
 
         # He goes on the web page and clicks on CV Maker
         self.browser.get('http://localhost:8000')
+        self.assertIn('Home', self.browser.title)
         time.sleep(5)
         self.browser.find_element_by_link_text('CV Maker').click()
 
@@ -32,7 +33,7 @@ class NewTest(unittest.TestCase):
 
         self.browser.find_element_by_id('id_new_cv').click()
 
-        self.assertIn('Home', self.browser.title)
+        self.assertIn('New CV', self.browser.title)
 
         # He sees the form he needs to complete in order to end up with a CV
         # He enters his name first
@@ -65,7 +66,6 @@ class NewTest(unittest.TestCase):
         # that he must enter them before submitting the CV
         self.browser.find_element_by_id('id_submit').click()
         time.sleep(2)
-        self.assertIn('Home', self.browser.title)
 
         # He enters them and is then able to submit his CV
         self.browser.find_element_by_id('id_username').send_keys('Adam01')
@@ -79,10 +79,8 @@ class NewTest(unittest.TestCase):
         self.browser.get('http://localhost:8000/new_cv/display')
         self.browser.find_element_by_id('id_menu_back').click()
 
-        # He wants to edit his CV so he clicks on edit cv this time
-        self.browser.get('http://localhost:8000/select')
-
-        # He accidentally clicks on New CV and goes back to the selection page
+        # He wants to edit his CV, but he accidentally clicks on New CV
+        # And has to return to the selection page and click on Edit CV
         self.browser.find_element_by_id('id_new_cv').click()
         self.browser.find_element_by_id('id_new_back').click()
         self.browser.find_element_by_id('id_edit_cv').click()
