@@ -3,33 +3,141 @@
 {% load static %}
 {% block content %}
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <title>Display</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <title>Title</title>
+    <link type="text/css" rel="stylesheet" href="{% static "css/display_style.css"%} ">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <h2>The selected username is: {{ display_user_id  }}</h2>
 
+<div class="container">
+    <div id="cv">
+	<div class="mainDetails">
+
+		<div id="name">
+            {% for display in display_data %}
+                {% if display.username == display_user_id %}
+                    <h1>{{ display.first_name }} {{ display.last_name }}</h1>
+                {% endif %}
+            {% endfor %}
+		</div>
+
+		<div id="contactDetails">
+			<ul>
+                {% for display in display_data %}
+                    {% if display.username == display_user_id %}
+				        <li>{{ display.email }}</li>
+				        <li>{{ display.phone_number }}</li>
+                        <li>{{ display.address }}</li>
+                    {% endif %}
+                {% endfor %}
+			</ul>
+		</div>
+		<div class="clear"></div>
+	</div>
+
+	<div id="mainArea">
 
         {% for display in display_data %}
-            {% if display.username ==  display_user_id %}
-                <p>{{ display.first_name }} {{ display.last_name }}</p>
-                <p>{{ display.email }}</p>
-                <p>{{ display.phone_number }}</p>
-                <p>{{ display.address }}</p>
-                <p>{{ display.pers_desc }}</p>
-                <p>{{ display.experience }}</p>
-                <p>{{ display.education }}</p>
-                <p>{{ display.skills }}</p>
-                <p>{{ display.hobbies }}</p>
+            {% if display.username == display_user_id %}
+                {% if display.pers_desc != "" %}
+                    <section>
+                        <div class="sectionTitle">
+                            <h1>Personal Profile</h1>
+                        </div>
+
+                        <div class="sectionContent">
+                            <p>{{ display.pers_desc|linebreaks }}</p>
+                        </div>
+                        <div class="clear"></div>
+                    </section>
+                {% endif %}
             {% endif %}
         {% endfor %}
 
-        <a href="{% url 'select' %}">
-            <button class="btn btn-success" type="button" id="id_menu_back">< Back</button></a>
-    </div>
+
+        {% for display in display_data %}
+            {% if display.username == display_user_id %}
+                {% if display.experience != "" %}
+                    <section>
+                        <div class="sectionTitle">
+                            <h1>Experience</h1>
+                        </div>
+
+                        <div class="sectionContent">
+                                    <p>{{ display.experience|linebreaks }}<p>
+                        </div>
+                        <div class="clear"></div>
+                    </section>
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+
+         {% for display in display_data %}
+            {% if display.username == display_user_id %}
+                {% if display.education != "" %}
+                    <section>
+                        <div class="sectionTitle">
+                            <h1>Education</h1>
+                        </div>
+
+                        <div class="sectionContent">
+                            <p>{{ display.education|linebreaks }}</p>
+                        </div>
+                        <div class="clear"></div>
+                    </section>
+
+                {% endif %}
+            {% endif %}
+         {% endfor %}
+
+        {% for display in display_data %}
+            {% if display.username == display_user_id %}
+                {% if display.skills != "" %}
+                    <section>
+                        <div class="sectionTitle">
+                            <h1>Key Skills</h1>
+                        </div>
+
+                        <div class="sectionContent">
+                            <p>{{ display.skills|linebreaks }}<p>
+                        </div>
+                        <div class="clear"></div>
+                    </section>
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+
+
+        {% for display in display_data %}
+            {% if display.username == display_user_id %}
+                {% if display.hobbies != "" %}
+                    <section>
+                        <div class="sectionTitle">
+                            <h1>Hobbies</h1>
+                        </div>
+
+                        <div class="sectionContent">
+                                   <p>{{ display.hobbies|linebreaks }}<p>
+                        </div>
+                        <div class="clear"></div>
+                    </section>
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+
+	</div>
+</div>
+
+         <a href="{% url 'select' %}">
+             <button class="btn btn-success" type="Submit" id="id_menu_back" name="submit">< Back</button>
+         </a>
+
+        </div>
+
 </body>
 {% endblock %}
 </html>
