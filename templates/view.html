@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <link type="text/css" rel="stylesheet" href="{% static "css/view_style.css"%} ">
+</head>
+<body>
+    <div class="container">
+        <h5>Select which CV you want to have a look at based on the username:</h5> <p></p>
+        <form method="post" action="display/">
+            {% csrf_token %}
+            <!--<input name="username" id="id_username" placeholder="Enter a username" required/> <p></p>-->
+             <select name="username_select">
+                 {% for use in username %}
+                    <option value="{{ use }}">{{ use }}</option>
+                 {% endfor %}
+            </select>
+            <button class="btn btn-success" type="Submit" id="id_submit" name="submit">View CV</button></a><p></p>
+        </form>
+        <table style="width:30%">
+        <tr>
+        <th>Username</th>
+        <th>Name</th>
+        </tr>
+        {% for names in data %}
+            <tr>
+                <td>{{ names.username }} </td>
+                <td>{{ names.first_name }} {{ names.last_name }}</td>
+            </tr>
+        {% endfor %}
+        </table>
+    </div>
+</body>
+{% endblock %}
+</html>

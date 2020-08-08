@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="container">
-        <h5>Would you like to create a new CV?</h5>
+        <h5>Would you like to create a new CV?</h5><p></p>
         <a href="{% url 'new_cv' %}">
             <button class="btn btn-success" type="Submit" id="id_new_cv" name="New CV">New CV</button> <p></p>
         </a>
@@ -21,8 +21,12 @@
                     <option value="{{ use }}">{{ use }}</option>
                  {% endfor %}
             </select>
-                <button class="btn btn-success" type="Submit" id="id_edit_cv" name="submit">Edit CV</button>
+                <button class="btn btn-success" type="Submit" id="id_edit_cv" name="submit">Edit CV</button><p></p>
         </form>
+        <h5>Would you like to view an existing CV?</h5><p></p>
+        <a href="{% url 'view' %}">
+            <button class="btn btn-success" type="Submit" id="id_submit" name="New CV">View CV</button> <p></p>
+        </a>
     </div>
 
 </body>

@@ -22,22 +22,6 @@ def edit(request):
     return render(request, 'edit.html', {'data': data, 'user_id': user_id})
 
 
-class DisplayListView(ListView):
-    model = CV
-    template_name = 'display_list.html'
-
-    def get_queryset(self):
-        return CV.objects.all()
-
-
-class DisplayElements(ListView):
-    model = CV
-    template_name = 'edit.html'
-
-    def get_queryset(self):
-        return CV.objects.all()
-
-
 def tem_display(request):
     display_data = CV.objects.all()
     display_user_id = request.POST.get('username')
@@ -73,9 +57,21 @@ def new_display(request):
     return render(request, 'display.html', {'display_data': display_data, 'display_user_id': display_user_id})
 
 
+def view_display(request):
+    display_data = CV.objects.all()
+    display_user_id = request.POST.get('username_select')
+    return render(request, 'display.html', {'display_data': display_data, 'display_user_id': display_user_id})
+
+
 def select(request):
     username = CV.objects.values_list('username', flat=True)
     return render(request, 'select.html', {'username': username})
+
+
+def view(request):
+    username = CV.objects.values_list('username', flat=True)
+    data = CV.objects.all()
+    return render(request, 'view.html', {'username': username, 'data': data})
 
 
 def bonus(request):

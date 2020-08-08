@@ -8,7 +8,7 @@ from cv_app.models import CV
 
 # Create your tests here.
 
-class MainPageTest(TestCase):
+class UnitTest(TestCase):
 
     def test_index(self):
         found = resolve('/')
@@ -19,13 +19,13 @@ class MainPageTest(TestCase):
         self.assertTemplateUsed(response, 'index.html')
         response = self.client.get('/bonus/')
         self.assertTemplateUsed(response, 'bonus.html')
-        response = self.client.get('/display/')
-        self.assertTemplateUsed(response, 'display_list.html')
         response = self.client.get('/select/edit/')
         self.assertTemplateUsed(response, 'edit.html')
 
     def test_display_html(self):
         response = self.client.get('/new_cv/display/')
+        self.assertTemplateUsed(response, 'display.html')
+        response = self.client.get('/view/display/')
         self.assertTemplateUsed(response, 'display.html')
 
 

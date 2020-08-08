@@ -21,10 +21,11 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('new_cv/', views.new_cv, name='new_cv'),
     path('select/edit/', views.edit, name='edit'),
-    path('display/', views.DisplayListView.as_view(), name='display'),
     path('bonus/', views.bonus, name='bonus'),
     path('select/', views.select, name='select'),
     path('select/edit/display/', views.tem_display, name='display'),
     path('new_cv/display/', views.new_display, name='display'),
+    path('view/', views.view, name='view'),
+    path('view/display/', views.view_display, name='display'),
     path('admin/', admin.site.urls),
 ]
