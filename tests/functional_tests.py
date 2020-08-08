@@ -24,13 +24,8 @@ class NewTest(unittest.TestCase):
         time.sleep(5)
         self.browser.find_element_by_link_text('CV Maker').click()
 
-        # He goes to the homepage
-        # browser = webdriver.Chrome(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'cromedriver.exe'))
-        # browser = webdriver.Chrome()
-
         # He sees two buttons that say Create New CV or Edit CV and a form to enter his username
         # and since he doesn't have one he clicks on the first button
-
         self.browser.find_element_by_id('id_new_cv').click()
 
         self.assertIn('New CV', self.browser.title)

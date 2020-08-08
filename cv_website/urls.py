@@ -16,16 +16,18 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from cv_app import views
+from blog import views as bview
 
 urlpatterns = [
     path('', views.index, name='index'),
     path('new_cv/', views.new_cv, name='new_cv'),
     path('select/edit/', views.edit, name='edit'),
-    path('bonus/', views.bonus, name='bonus'),
     path('select/', views.select, name='select'),
     path('select/edit/display/', views.tem_display, name='display'),
     path('new_cv/display/', views.new_display, name='display'),
     path('view/', views.view, name='view'),
     path('view/display/', views.view_display, name='display'),
+    path('blog/', bview.Blog.as_view(), name='blog'),
+    path('blog/<slug:slug>/', bview.Post.as_view(), name='post'),
     path('admin/', admin.site.urls),
 ]

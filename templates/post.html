@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+            crossorigin="anonymous" />
+ <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400&display=swap" rel="stylesheet">
+
+
+<style>
+    .card {
+        font-family: 'Raleway', sans-serif;
+    }
+    h1 {
+        font-weight: bold;
+    }
+</style>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 card mb-4  mt-3 left  top">
+      <div class="card-body">
+        <h1> {{ object.title }}</h1>
+        <p class=" text-muted">{{ post.author }}, {{ post.created_on }}</p>
+        <p class="card-text ">{{ object.content | safe }}</p>
+        <a href="{% url 'blog'  %}" class="btn btn-success">< Back</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

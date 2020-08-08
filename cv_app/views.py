@@ -74,9 +74,5 @@ def view(request):
     return render(request, 'view.html', {'username': username, 'data': data})
 
 
-def bonus(request):
-    return render(request, 'bonus.html')
-
-
 def display(request):
     return render(request, 'display.html')
