@@ -6,8 +6,41 @@
     <meta charset="UTF-8">
     <title>Home</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400&display=swap" rel="stylesheet">
+
+
+<style>
+    .card {
+        box-shadow: 0 16px 48px #E3E7EB;
+        font-family: 'Raleway', sans-serif;
+        margin-top: 100px;
+    }
+    h2 {
+        font-weight: bold;
+    }
+    a:link {
+        text-decoration: none;
+    }
+
+</style>
 </head>
 <body>
+<div class="container">
+     <div class="card mb-4">
+                <div class="card-body">
+                    <a href="{% url 'select' %}"style="color: #222222">
+                        <h3>CV Maker - allows you to create your own CV just by entering your information in a few text fields, as well as edit your CV or view any other existing CV</h3>
+                    </a>
+                    </div>
+    </div>
+    <div class="card mb-4">
+                <div class="card-body">
+                    <a href="{% url 'blog' %}"style="color: #222222">
+                        <h3>Blog - Find out more information about this site and a few other things</h3>
+                    </a>
+                </div>
+    </div>
+</div>
 </body>
 {% endblock %}
 </html>

@@ -1,8 +1,6 @@
-from django.core.exceptions import ValidationError
-from django.shortcuts import render, redirect
-from django.http import HttpResponse
-from django.views.generic import ListView
 from django.contrib import messages
+from django.shortcuts import render, redirect
+
 from cv_app.models import CV
 
 

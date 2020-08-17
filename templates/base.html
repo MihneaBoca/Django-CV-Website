@@ -2,12 +2,12 @@
 <html lang="en">
 
         <nav class="mb-1 navbar navbar-expand-sm navbar-default" style="background-color: #5eb477;">
-        <!--<div class="container">-->
-            <a class="navbar-brand"  href="{% url 'index' %}"><strong>Home</strong></a>
-            <a class="nav-item nav-link" href="{% url 'select' %}"><strong>CV Maker</strong></a>
-            <a class="nav-item nav-link" href="{% url 'blog' %}"><strong>Blog</strong></a>
 
-        <!--</div>-->
+            <a class="navbar-brand"  href="{% url 'index' %}" style="color: white"><strong>Home</strong></a>
+            <a class="nav-item nav-link" href="{% url 'select' %}" style="color: white"><strong>CV Maker</strong></a>
+            <a class="nav-item nav-link" href="{% url 'blog' %}" style="color: white"><strong>Blog</strong></a>
+
+
         </nav>
         {% block content %}
         {% endblock %}

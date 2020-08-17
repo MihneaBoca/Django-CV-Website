@@ -3,6 +3,7 @@ import os
 from selenium import webdriver
 import unittest
 import time
+from selenium.webdriver.support.ui import Select
 from webdriver_manager.chrome import ChromeDriverManager
 
 
@@ -14,7 +15,7 @@ class NewTest(unittest.TestCase):
     def tearDown(self):
         self.browser.quit()
 
-    def test_access_website(self):
+    def test_use_website(self):
         # Adam is a student that wants to write a CV for future use,
         # he's heard there is a website where you can write your CV online
 
@@ -78,7 +79,17 @@ class NewTest(unittest.TestCase):
         # And has to return to the selection page and click on Edit CV
         self.browser.find_element_by_id('id_new_cv').click()
         self.browser.find_element_by_id('id_new_back').click()
+
+        # He selects his username from the dropdown and clicks on edit CV
+        Select(self.browser.find_element_by_name('username_select')).select_by_visible_text('Adam01')
         self.browser.find_element_by_id('id_edit_cv').click()
+
+        # He adds in some Hobbies
+        self.browser.find_element_by_id('id_hobbies').send_keys('I like to read books.')
+        self.browser.find_element_by_id('id_submit').click()
+
+        # The website displays his new CV and he decides it is good enough for now and returns to the menu
+        self.browser.find_element_by_id('id_menu_back').click()
 
 
 if __name__ == '__main__':

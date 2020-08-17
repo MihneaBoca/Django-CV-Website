@@ -14,7 +14,6 @@
         <h5>Select which CV you want to have a look at based on the username:</h5> <p></p>
         <form method="post" action="display/">
             {% csrf_token %}
-            <!--<input name="username" id="id_username" placeholder="Enter a username" required/> <p></p>-->
              <select name="username_select">
                  {% for use in username %}
                     <option value="{{ use }}">{{ use }}</option>
