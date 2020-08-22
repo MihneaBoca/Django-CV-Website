@@ -9,6 +9,7 @@
 <style>
     .card {
         font-family: 'Raleway', sans-serif;
+        font-size: 20px;
     }
     h1 {
         font-weight: bold;
@@ -21,7 +22,7 @@
       <div class="card-body">
         <h1> {{ object.title }}</h1>
         <p class=" text-muted">{{ post.author }}, {{ post.created_on }}</p>
-        <p class="card-text ">{{ object.content | safe }}</p>
+        <p class="card-text ">{{ object.content|linebreaks}}</p>
         <a href="{% url 'blog'  %}" class="btn btn-success">< Back</a>
       </div>
     </div>
